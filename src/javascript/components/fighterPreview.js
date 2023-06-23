@@ -8,6 +8,35 @@ export function createFighterPreview(fighter, position) {
     });
 
     // todo: show fighter info (image, name, health, etc.)
+    if(fighter) {
+        const fighterImg = createFighterImage(fighter);
+        const fighterName = createElement({ tagName: 'h4' });
+        const fighterDetails = createElement({
+          tagName: 'div',
+          className: 'fighter-details'
+        });
+        const fighterDetailsWrapper = createElement({
+          tagName: 'div',
+          className: 'fighter-details-wrapper'
+        });
+        fighterDetails.innerHTML = `
+          <div>
+            <p>
+            Holaa + ${fighter.attack}</p>
+          </div>
+          <div>
+          <p>${fighter['defense']}</p>
+          </div>
+          <div>
+            <p>
+            ${fighter['health']}</p>
+          </div>
+        `;
+        console.log('fighter.name '+ fighter['name'])
+        fighterName.innerText = fighter['name'];
+        fighterDetailsWrapper.append(fighterName, fighterDetails);
+        fighterElement.append(fighterImg, fighterDetailsWrapper);
+      }
 
     return fighterElement;
 }
